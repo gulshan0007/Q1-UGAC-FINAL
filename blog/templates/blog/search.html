@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h3>Search Results for "{{ query }}"</h3>
+    
+    {% if results %}
+        <table>
+            <tr>
+                <th>Serial</th>
+                <th>Title</th>
+                <th>Download</th>
+            </tr>
+            {% for post in results %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ post.title }}.pdf</td>
+                <td><a href="{{ post.adminupload.url }}" download="{{ post.adminupload.url }}" class="button">Download</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+</body>
+</html>
